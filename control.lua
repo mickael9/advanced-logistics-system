@@ -56,7 +56,7 @@ end)
 --- Handles items search and gui update
 script.on_event(defines.events.on_tick, function(event)
         if event.tick % 60 == 0  then
-            for index,player in ipairs(game.players) do
+            for index,player in pairs(game.players) do
                 local hasSystem = playerHasSystem(player)
                 
                 if hasSystem then
@@ -212,7 +212,7 @@ end
 
 --- init all players
 function initPlayers()
-    for _,player in ipairs(game.players) do
+    for _,player in pairs(game.players) do
         initPlayer(player)
     end
 end
@@ -426,7 +426,7 @@ function activateSystem(event)
     if not hasSystem or hasSystem == nil then
         global.hasSystem[forceName] = true
         local players = event.research.force.players
-        for index,player in ipairs(players) do 
+        for index,player in pairs(players) do 
             if (not global.guiLoaded[index]) then
                 initGUI(player)
             end
@@ -1256,7 +1256,7 @@ end
 -- debugging tools
 function debugLog(msg, force)
     if (DEV or force) and msg then
-            for i,player in ipairs(game.players) do
+            for i,player in pairs(game.players) do
                 if player and player.valid then
                     if type(msg) == "string" then
                         player.print(msg)
