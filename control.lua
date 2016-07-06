@@ -13,7 +13,6 @@ end)
 
 --- on_load event
 script.on_load(function()
-    init()
 end)
 
 --- on_configuration_changed event
@@ -194,7 +193,6 @@ function init()
             woc = "wooden-chest",
             irc = "iron-chest",
             stc = "steel-chest",
-            smc = "smart-chest",
         }
     }
     
@@ -387,6 +385,10 @@ function on_configuration_changed(data)
         local oldVersion = data.mod_changes[modName].old_version
         
         if oldVersion ~= nil then
+            if oldVersion < "0.2.14" then
+                global.codeToName.normal.smc = nil
+            end
+
             -- reset network names for version 0.2.10
             if newVersion and newVersion == "0.2.10" then
                 global.networksNames = {}

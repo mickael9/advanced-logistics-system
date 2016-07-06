@@ -5,6 +5,10 @@ function updateItemsTable(items, player, index, page, search, sort_by, sort_dir)
         local currentTab = global.currentTab[index]
         local colspan = 8
 
+        if currentTab == "normal" then
+            colspan = 7
+        end
+
         if player.gui[guiPos].logisticsFrame ~= nil and player.gui[guiPos].logisticsFrame.contentFrame ~= nil then
 
             local contentFrame = player.gui[guiPos].logisticsFrame.contentFrame
