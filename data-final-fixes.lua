@@ -1,7 +1,6 @@
 -- create item icon styles
-for _,entitytype in pairs(data.raw) do
-   for _,entity in pairs(entitytype) do
-      if entity.icon then
+for _,entity in pairs(data.raw["item"]) do
+    if entity.icon then
         local style =
         {
             type = "checkbox_style",
@@ -36,6 +35,5 @@ for _,entitytype in pairs(data.raw) do
             }
         }
         data.raw["gui-style"].default["item-icons-" .. entity.name] = style
-      end
-   end
+    end
 end
