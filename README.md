@@ -9,6 +9,11 @@ Forum Link : [Advanced Logistics System](http://www.factorioforums.com/forum/vie
 
 Changelog
 -----
+**0.2.14**
+
+ - Updated for Factorio 0.13
+ - Fixed icon for batteries.
+
 **0.2.13**
 
  - Fixed an issue with the on_configuration_changed not properly checking for mod_changes.
