@@ -1,10 +1,10 @@
 --- Init GUI and add Logistics View main button
 function initGUI(player, force)
-	if force and player.gui.top["logistics-view-button"] ~= nil then
-		if player.gui.top["logistics-view-button"].style ~= "als_button_main_icon" then
-			player.gui.top["logistics-view-button"].style = "als_button_main_icon"
-		end
-	end
+    if force and player.gui.top["logistics-view-button"] ~= nil then
+        if player.gui.top["logistics-view-button"].style ~= "als_button_main_icon" then
+            player.gui.top["logistics-view-button"].style = "als_button_main_icon"
+        end
+    end
     if not player.gui.top["logistics-view-button"] then
         player.gui.top.add({type = "button", name = "logistics-view-button", style = "als_button_main_icon"})
         global.guiLoaded[player.index] = true
@@ -164,10 +164,10 @@ end
 
 --- Get item sprite path
 function getItemSprite(player, name)
-	local gui = player.gui
-	local path = "item/" .. name
-	if gui.is_valid_sprite_path(path) then
-		return path
-	end
-	return false
+    local gui = player.gui
+    local path = "item/" .. name
+    if gui.is_valid_sprite_path(path) then
+        return path
+    end
+    return false
 end

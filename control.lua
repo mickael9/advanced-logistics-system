@@ -9,7 +9,7 @@ script.on_init(function()
     init()
     -- init player & force specific globals
     initPlayers()
-	initForces()	
+    initForces()    
 end)
 
 --- on_configuration_changed event
@@ -105,45 +105,45 @@ function on_configuration_changed(data)
                     end
                 end
             end
-			
-			-- update for 0.3.0
-			if oldVersion <= "0.3.0" then
-				if global.normalChestsNames ~= nil then
-					global.normalChestsNames = nil
-				end
-				-- init globals
-				init()
-				-- init player specific globals
-				initPlayers()
-				-- init force specific globals
-				initForces()
-				-- reinit gui 
-				for index,player in pairs(game.players) do
-					local hasSystem = playerHasSystem(player)
-					local force = player.force
-										
-					if hasSystem then
-						if player.gui.top["logistics-view-button"] ~= nil then
-							player.gui.top["logistics-view-button"].style = "als_button_main_icon"
-						end
-					else
-						if force and force.technologies["advanced-logistics-systems"].researched then    
-							global.hasSystem[force.name] = true
-							initGUI(player, true)
-						end					
-					end
-				end								
-			end
+            
+            -- update for 0.3.0
+            if oldVersion <= "0.3.0" then
+                if global.normalChestsNames ~= nil then
+                    global.normalChestsNames = nil
+                end
+                -- init globals
+                init()
+                -- init player specific globals
+                initPlayers()
+                -- init force specific globals
+                initForces()
+                -- reinit gui 
+                for index,player in pairs(game.players) do
+                    local hasSystem = playerHasSystem(player)
+                    local force = player.force
+                                        
+                    if hasSystem then
+                        if player.gui.top["logistics-view-button"] ~= nil then
+                            player.gui.top["logistics-view-button"].style = "als_button_main_icon"
+                        end
+                    else
+                        if force and force.technologies["advanced-logistics-systems"].researched then    
+                            global.hasSystem[force.name] = true
+                            initGUI(player, true)
+                        end                    
+                    end
+                end                                
+            end
         else
-		-- init globals for new installs
-			-- init globals
-			init()
-			-- init player specific globals
-			initPlayers()
-			-- init force specific globals
-			initForces()			
-		
-		end
+        -- init globals for new installs
+            -- init globals
+            init()
+            -- init player specific globals
+            initPlayers()
+            -- init force specific globals
+            initForces()            
+        
+        end
     end
 end
 
@@ -236,7 +236,7 @@ end
 --- init player specific global values
 function initPlayer(player)
     local index = player.index
-	
+    
     -- gui visibility
     if not global.guiVisible[index] or global.guiVisible[index] == nil then
         global.guiVisible[index] = 0
@@ -335,7 +335,7 @@ function initPlayer(player)
     if not global.disconnectedFilters[index] then
         global.disconnectedFilters[index] = {}
         global.disconnectedFilters[index]["chests"] = {all = true}
-    end	
+    end    
 end
 
 --- init all forces
@@ -348,7 +348,7 @@ end
 --- init force specific global values
 function initForce(force)
     local forceName = force.name
-	
+    
     -- hasSystem
     if not global.hasSystem[forceName] then
         global.hasSystem[forceName] = nil
@@ -801,12 +801,12 @@ end
 function checkDisconnectedChests(force)
     local disconnected = global.disconnectedChests[force.name]
 
-	if disconnected ~= nil then
-		for key,chest in pairs(disconnected) do
-			if chest.valid and inLogisticsNetwork(chest, force) then
-				disconnected[key] = nil
-			end
-		end
+    if disconnected ~= nil then
+        for key,chest in pairs(disconnected) do
+            if chest.valid and inLogisticsNetwork(chest, force) then
+                disconnected[key] = nil
+            end
+        end
     end
     global.disconnectedChests[force.name] = disconnected    
 end
@@ -865,10 +865,10 @@ function getLogisticsItems(force, index)
                     end
                     
                     -- check exclude requesters
-                    if (excludeReq and type ~= "requester") or not excludeReq then  						
+                    if (excludeReq and type ~= "requester") or not excludeReq then                          
                         items[n]["total"] = items[n]["total"] + v
                         total = total + v
-                    end				
+                    end                
                     
                     items[n][chest.name] = items[n][chest.name] + v
                     
@@ -966,7 +966,7 @@ function getItemInfo(item, player, index, filters)
     local info = {chests = {}, total = total}
     local networksFilter = global.networksFilter[index] or {}
     local networksFilterCount = count(networksFilter)    
-	local excludeReq = global.settings[index].excludeReq
+    local excludeReq = global.settings[index].excludeReq
 
     -- get item info
     for type,chests in pairs(types) do
@@ -1041,14 +1041,14 @@ end
 
 --- Gets localised item/entity name
 function getLocalisedName(name)
-	local locName = name
-	if game.item_prototypes[name] ~= nil then
-		locName = game.item_prototypes[name].localised_name
+    local locName = name
+    if game.item_prototypes[name] ~= nil then
+        locName = game.item_prototypes[name].localised_name
     else
-		if game.entity_prototypes[name] ~= nil then
-			locName = game.entity_prototypes[name].localised_name
-		end 
-	end
+        if game.entity_prototypes[name] ~= nil then
+            locName = game.entity_prototypes[name].localised_name
+        end 
+    end
     return locName
 end
 
