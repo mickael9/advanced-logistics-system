@@ -28,7 +28,7 @@ function addSearchWidget(player, index)
         end
     end
 
-    --add search frame
+    -- add search frame
     local searchFrame = searchFlow[currentTab .. "SearchFrame"]
     if searchFrame == nil then
         searchFrame = searchFlow.add({type = "frame", name = currentTab .. "SearchFrame", style = "als_search_frame", direction = "horizontal"})
@@ -36,7 +36,7 @@ function addSearchWidget(player, index)
     end
     searchFrame.style = "als_search_frame"
 
-    --add search field
+    -- add search field
     local searchField = searchFlow[currentTab .. "SearchFrame"][currentTab .. "-search-field"]
     if searchField == nil then
         searchField = searchFrame.add({type = "textfield", name = currentTab .. "-search-field", style = "als_searchfield_style", text = searchText })
@@ -55,14 +55,14 @@ function addNetworkSearchWidget(player, index)
         searchFlow = contentFrame.add({type = "flow", name = "searchFlow", style = "als_info_flow", direction = "horizontal"})
     end
 
-    --add search frame
+    -- add search frame
     local searchFrame = searchFlow["networksSearchFrame"]
     if searchFrame == nil then
         searchFrame = searchFlow.add({type = "frame", name = "networksSearchFrame", style = "als_search_frame", direction = "horizontal"})
         searchFrame.add({type = "label", name = "networksSearchFrameLabel", style = "als_search_label", caption = {"search-label"}})
     end
 
-    --add search field
+    -- add search field
     local searchField = searchFlow["networksSearchFrame"]["networks-search-field"]
     if searchField == nil then
         searchField = searchFrame.add({type = "textfield", name = "networks-search-field", style = "als_searchfield_style", text = searchText })
@@ -88,7 +88,7 @@ function addItemsInfoWidget(player, index)
         end
     end
 
-    --add info frame
+    -- add info frame
     local infoFrame = infoFlow[currentTab .. "InfoFrame"]
     if infoFrame ~= nil then
         infoFrame.destroy()
@@ -262,7 +262,7 @@ function addItemTotalsInfoWidget(info, player, index)
         infoFlow = contentFrame.add({type = "flow", name = "infoFlow", style = "als_info_flow", direction = "horizontal"})
     end
 
-    --add item name info frame
+    -- add item name info frame
     local infoFrameName = infoFlow[currentTab .. "infoFrameName"]
     if infoFrameName ~= nil then
         infoFrameName.destroy()
@@ -274,7 +274,7 @@ function addItemTotalsInfoWidget(info, player, index)
     infoFrameName.add({type = "label", name = currentTab .. "infoFrameNameValue", style = "label_style", caption = getLocalisedName(currentItem)})
 
 
-    --add "all" total info frame
+    -- add "all" total info frame
     local infoFrameAll = infoFlow[currentTab .. "InfoFrameAll"]
     if infoFrameAll ~= nil then
         infoFrameAll.destroy()

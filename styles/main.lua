@@ -1,50 +1,53 @@
---Variables
-is_scalable = false
+-- Variables
+local is_scalable = false
 
---Fonts
+-- Fonts
 data:extend(
 {
-  {
-    type = "font",
-    name = "font-s",
-    from = "default",
-    size = 12
-  },
-  {
-    type = "font",
-    name = "font-m",
-    from = "default",
-    size = 14
-  },
-  {
-    type = "font",
-    name = "font-l",
-    from = "default",
-    size = 16
-  },
-  {
-    type = "font",
-    name = "font-sb",
-    from = "default-semibold",
-    size = 12
-  },
-  {
-    type = "font",
-    name = "font-mb",
-    from = "default-semibold",
-    size = 14
-  },
-  {
-    type = "font",
-    name = "font-lb",
-    from = "default-semibold",
-    size = 16
-  }
+    {
+        type = "font",
+        name = "font-s",
+        from = "default",
+        size = 12
+    },
+    {
+        type = "font",
+        name = "font-m",
+        from = "default",
+        size = 14
+    },
+    {
+        type = "font",
+        name = "font-l",
+        from = "default",
+        size = 16
+    },
+    {
+        type = "font",
+        name = "font-sb",
+        from = "default-semibold",
+        size = 12
+    },
+    {
+        type = "font",
+        name = "font-mb",
+        from = "default-semibold",
+        size = 14
+    },
+    {
+        type = "font",
+        name = "font-lb",
+        from = "default-semibold",
+        size = 16
+    }
 }
 )
 
 --- Settings GUI
-data.raw["gui-style"].default["als_settings_table"] =
+
+local style = data.raw["gui-style"].default
+
+style.als_settings_table =
 {
     type = "table_style",
     font = "font-m",
@@ -63,7 +66,7 @@ data.raw["gui-style"].default["als_settings_table"] =
     }
 }
 
-data.raw["gui-style"].default["als_settings_info_label"] =
+style.als_settings_info_label =
 {
     type = "label_style",
     parent = "label_style",
@@ -73,7 +76,7 @@ data.raw["gui-style"].default["als_settings_info_label"] =
 
 --- Location view gui
 
-data.raw["gui-style"].default["als_location_view"] =
+style.als_location_view =
 {
     type = "button_style",
     parent = "button_style",
@@ -123,7 +126,7 @@ data.raw["gui-style"].default["als_location_view"] =
 }
 
 --- Main GUI
-data.raw["gui-style"].default["als_frame"] =
+style.als_frame =
 {
     type = "frame_style",
     font = "font-m",
@@ -135,14 +138,14 @@ data.raw["gui-style"].default["als_frame"] =
     scalable = is_scalable,
 }
 
-data.raw["gui-style"].default["als_frame_hidden"] =
+style.als_frame_hidden =
 {
     type = "frame_style",
     parent = "als_frame",
     visible = false
 }
 
-data.raw["gui-style"].default["als_title_label"] =
+style.als_title_label =
 {
     type = "label_style",
     parent = "label_style",
@@ -153,7 +156,7 @@ data.raw["gui-style"].default["als_title_label"] =
     font_color = {r=0.98, g=0.66, b=0.22}
 }
 
-data.raw["gui-style"].default["als_content_frame"] =
+style.als_content_frame =
 {
     type = "frame_style",
     top_padding = 0,
@@ -166,13 +169,13 @@ data.raw["gui-style"].default["als_content_frame"] =
 
 --- Items gui
 
-data.raw["gui-style"].default["als_items_frame"] =
+style.als_items_frame =
 {
     type = "frame_style",
     parent = "als_content_frame",
 }
 
-data.raw["gui-style"].default["als_items_table"] =
+style.als_items_table =
 {
     type = "table_style",
     minimal_height = 400,
@@ -192,7 +195,7 @@ data.raw["gui-style"].default["als_items_table"] =
 }
 
 -- search
-data.raw["gui-style"].default["als_search_frame"] =
+style.als_search_frame =
 {
     type = "frame_style",
     top_padding = 5,
@@ -204,14 +207,14 @@ data.raw["gui-style"].default["als_search_frame"] =
     align = "center",
 }
 
-data.raw["gui-style"].default["als_search_frame_hidden"] =
+style.als_search_frame_hidden =
 {
     type = "frame_style",
     parent = "als_search_frame",
     visible = false
 }
 
-data.raw["gui-style"].default["als_search_label"] =
+style.als_search_label =
 {
     type = "label_style",
     parent = "label_style",
@@ -221,7 +224,7 @@ data.raw["gui-style"].default["als_search_label"] =
     font_color = {r=0.98, g=0.66, b=0.22}
 }
 
-data.raw["gui-style"].default["als_searchfield_style"] =
+style.als_searchfield_style =
 {
     type = "textfield_style",
     parent = "textfield_style",
@@ -230,7 +233,7 @@ data.raw["gui-style"].default["als_searchfield_style"] =
 }
 
 -- item info
-data.raw["gui-style"].default["als_info_flow"] =
+style.als_info_flow =
 {
     type = "flow_style",
     horizontal_spacing = 2,
@@ -238,7 +241,7 @@ data.raw["gui-style"].default["als_info_flow"] =
     scalable = is_scalable,
 }
 
-data.raw["gui-style"].default["als_info_frame"] =
+style.als_info_frame =
 {
     type = "frame_style",
     top_padding = 5,
@@ -249,7 +252,7 @@ data.raw["gui-style"].default["als_info_frame"] =
     minimal_height = 40
 }
 
-data.raw["gui-style"].default["als_info_label"] =
+style.als_info_label =
 {
     type = "label_style",
     parent = "label_style",
@@ -259,7 +262,7 @@ data.raw["gui-style"].default["als_info_label"] =
 }
 
 -- item filters
-data.raw["gui-style"].default["als_filters_frame"] =
+style.als_filters_frame =
 {
     type = "frame_style",
     top_padding = 3,
@@ -273,7 +276,7 @@ data.raw["gui-style"].default["als_filters_frame"] =
 
 -- items table headers
 
-data.raw["gui-style"].default["als_flow_style"] =
+style.als_flow_style =
 {
     type = "flow_style",
     horizontal_spacing = 0,
@@ -285,7 +288,7 @@ data.raw["gui-style"].default["als_flow_style"] =
     scalable = is_scalable,
 }
 
-data.raw["gui-style"].default["als_table_flow"] =
+style.als_table_flow =
 {
     type = "flow_style",
     parent = "als_flow_style",
@@ -296,7 +299,7 @@ data.raw["gui-style"].default["als_table_flow"] =
     scalable = is_scalable,
 }
 
-data.raw["gui-style"].default["als_total_flow"] =
+style.als_total_flow =
 {
     type = "flow_style",
     parent = "als_flow_style",
@@ -307,7 +310,7 @@ data.raw["gui-style"].default["als_total_flow"] =
     scalable = is_scalable,
 }
 
-data.raw["gui-style"].default["als_total_w_flow"] =
+style.als_total_w_flow =
 {
     type = "flow_style",
     parent = "als_flow_style",
@@ -318,7 +321,7 @@ data.raw["gui-style"].default["als_total_w_flow"] =
     scalable = is_scalable,
 }
 
-data.raw["gui-style"].default["als_pos_flow"] =
+style.als_pos_flow =
 {
     type = "flow_style",
     parent = "als_flow_style",
@@ -329,7 +332,7 @@ data.raw["gui-style"].default["als_pos_flow"] =
     scalable = is_scalable,
 }
 
-data.raw["gui-style"].default["als_sort_flow"] =
+style.als_sort_flow =
 {
     type = "flow_style",
     parent = "als_flow_style",
@@ -340,7 +343,7 @@ data.raw["gui-style"].default["als_sort_flow"] =
     scalable = is_scalable,
 }
 
-data.raw["gui-style"].default["als_icon_flow"] =
+style.als_icon_flow =
 {
     type = "flow_style",
     parent = "als_flow_style",
@@ -351,7 +354,7 @@ data.raw["gui-style"].default["als_icon_flow"] =
     scalable = is_scalable,
 }
 
-data.raw["gui-style"].default["als_name_flow"] =
+style.als_name_flow =
 {
     type = "flow_style",
     parent = "als_flow_style",
@@ -362,7 +365,7 @@ data.raw["gui-style"].default["als_name_flow"] =
     scalable = is_scalable,
 }
 
-data.raw["gui-style"].default["als_items_info_flow"] =
+style.als_items_info_flow =
 {
     type = "flow_style",
     parent = "als_flow_style",
@@ -373,7 +376,7 @@ data.raw["gui-style"].default["als_items_info_flow"] =
     scalable = is_scalable,
 }
 
-data.raw["gui-style"].default["als_tools_flow"] =
+style.als_tools_flow =
 {
     type = "flow_style",
     parent = "als_flow_style",
@@ -387,7 +390,7 @@ data.raw["gui-style"].default["als_tools_flow"] =
 }
 
 -- Networks
-data.raw["gui-style"].default["als_network_value_flow"] =
+style.als_network_value_flow =
 {
     type = "flow_style",
     parent = "als_flow_style",
@@ -395,14 +398,14 @@ data.raw["gui-style"].default["als_network_value_flow"] =
     width = 188,
 }
 
-data.raw["gui-style"].default["als_network_name_hidden"] =
+style.als_network_name_hidden =
 {
     type = "label_style",
     parent = "label_style",
     visible = false
 }
 
-data.raw["gui-style"].default["als_networks_frame"] =
+style.als_networks_frame =
 {
     type = "frame_style",
     top_padding = 5,
@@ -415,14 +418,14 @@ data.raw["gui-style"].default["als_networks_frame"] =
     scalable = is_scalable,
 }
 
-data.raw["gui-style"].default["als_networks_table_wrapper"] =
+style.als_networks_table_wrapper =
 {
     type = "scroll_pane_style",
     parent = "scroll_pane_style",
     maximal_height = 400,
 }
 
-data.raw["gui-style"].default["als_networks_table"] =
+style.als_networks_table =
 {
     type = "table_style",
     cell_padding = 5,
@@ -440,7 +443,7 @@ data.raw["gui-style"].default["als_networks_table"] =
     }
 }
 
-data.raw["gui-style"].default["als_network_filter_flow"] =
+style.als_network_filter_flow =
 {
     type = "flow_style",
     parent = "als_flow_style",
@@ -451,7 +454,7 @@ data.raw["gui-style"].default["als_network_filter_flow"] =
     scalable = is_scalable,
 }
 
-data.raw["gui-style"].default["als_network_name_flow"] =
+style.als_network_name_flow =
 {
     type = "flow_style",
     parent = "als_flow_style",
@@ -460,7 +463,7 @@ data.raw["gui-style"].default["als_network_name_flow"] =
     scalable = is_scalable,
 }
 
-data.raw["gui-style"].default["als_network_filter_hidden"] =
+style.als_network_filter_hidden =
 {
     type = "checkbox_style",
     parent = "checkbox_style",
@@ -469,7 +472,7 @@ data.raw["gui-style"].default["als_network_filter_hidden"] =
 
 -- Buttons
 
-data.raw["gui-style"].default["als_button"] =
+style.als_button =
 {
     type = "button_style",
     parent = "button_style",
@@ -517,7 +520,7 @@ data.raw["gui-style"].default["als_button"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_selected"] =
+style.als_button_selected =
 {
     type = "button_style",
     parent = "als_button",
@@ -559,7 +562,7 @@ data.raw["gui-style"].default["als_button_selected"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_small"] =
+style.als_button_small =
 {
     type = "button_style",
     parent = "als_button",
@@ -609,7 +612,7 @@ data.raw["gui-style"].default["als_button_small"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_small_selected"] =
+style.als_button_small_selected =
 {
     type = "button_style",
     parent = "als_button_small",
@@ -651,7 +654,7 @@ data.raw["gui-style"].default["als_button_small_selected"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_main_icon"] =
+style.als_button_main_icon =
 {
     type = "button_style",
     parent = "button_style",
@@ -702,7 +705,7 @@ data.raw["gui-style"].default["als_button_main_icon"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_close"] =
+style.als_button_close =
 {
     type = "button_style",
     parent = "button_style",
@@ -753,7 +756,7 @@ data.raw["gui-style"].default["als_button_close"] =
 }
 
 -- items table action icons
-data.raw["gui-style"].default["als_button_info"] =
+style.als_button_info =
 {
     type = "button_style",
     parent = "button_style",
@@ -805,7 +808,7 @@ data.raw["gui-style"].default["als_button_info"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_location"] =
+style.als_button_location =
 {
     type = "button_style",
     parent = "button_style",
@@ -857,7 +860,7 @@ data.raw["gui-style"].default["als_button_location"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_teleport"] =
+style.als_button_teleport =
 {
     type = "button_style",
     parent = "button_style",
@@ -909,7 +912,7 @@ data.raw["gui-style"].default["als_button_teleport"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_delete"] =
+style.als_button_delete =
 {
     type = "button_style",
     parent = "button_style",
@@ -961,7 +964,7 @@ data.raw["gui-style"].default["als_button_delete"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_delete_selected"] =
+style.als_button_delete_selected =
 {
     type = "button_style",
     parent = "button_style",
@@ -1002,8 +1005,8 @@ data.raw["gui-style"].default["als_button_delete_selected"] =
     clicked_graphical_set =
     {
         type = "monolith",
-            monolith_image =
-            {
+        monolith_image =
+        {
             filename = "__advanced-logistics-system__/graphics/gui.png",
             width = 22,
             height = 23,
@@ -1013,7 +1016,7 @@ data.raw["gui-style"].default["als_button_delete_selected"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_up_apc"] =
+style.als_button_up_apc =
 {
     type = "button_style",
     parent = "button_style",
@@ -1065,7 +1068,7 @@ data.raw["gui-style"].default["als_button_up_apc"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_up_ppc"] =
+style.als_button_up_ppc =
 {
     type = "button_style",
     parent = "button_style",
@@ -1117,7 +1120,7 @@ data.raw["gui-style"].default["als_button_up_ppc"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_up_sc"] =
+style.als_button_up_sc =
 {
     type = "button_style",
     parent = "button_style",
@@ -1170,7 +1173,7 @@ data.raw["gui-style"].default["als_button_up_sc"] =
 }
 
 
-data.raw["gui-style"].default["als_button_up_rc"] =
+style.als_button_up_rc =
 {
     type = "button_style",
     parent = "button_style",
@@ -1223,7 +1226,7 @@ data.raw["gui-style"].default["als_button_up_rc"] =
 }
 
 -- items table sort icons
-data.raw["gui-style"].default["als_button_name"] =
+style.als_button_name =
 {
     type = "button_style",
     parent = "als_button",
@@ -1273,7 +1276,7 @@ data.raw["gui-style"].default["als_button_name"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_name_selected"] =
+style.als_button_name_selected =
 {
     type = "button_style",
     parent = "als_button_name",
@@ -1315,7 +1318,7 @@ data.raw["gui-style"].default["als_button_name_selected"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_total"] =
+style.als_button_total =
 {
     type = "button_style",
     parent = "als_button",
@@ -1365,7 +1368,7 @@ data.raw["gui-style"].default["als_button_total"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_total_selected"] =
+style.als_button_total_selected =
 {
     type = "button_style",
     parent = "als_button_total",
@@ -1407,131 +1410,131 @@ data.raw["gui-style"].default["als_button_total_selected"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_count"] =
+style.als_button_count =
 {
     type = "button_style",
     parent = "als_button_total",
 }
 
-data.raw["gui-style"].default["als_button_count_selected"] =
+style.als_button_count_selected =
 {
     type = "button_style",
     parent = "als_button_total_selected",
 }
 
-data.raw["gui-style"].default["als_button_pos"] =
-{
-    type = "button_style",
-    parent = "als_button_total",
-    width = 60,
-}
-
-data.raw["gui-style"].default["als_button_pos_selected"] =
-{
-    type = "button_style",
-    parent = "als_button_total_selected",
-    width = 60,
-}
-
-data.raw["gui-style"].default["als_button_position"] =
+style.als_button_pos =
 {
     type = "button_style",
     parent = "als_button_total",
     width = 60,
 }
 
-data.raw["gui-style"].default["als_button_position_selected"] =
+style.als_button_pos_selected =
 {
     type = "button_style",
     parent = "als_button_total_selected",
     width = 60,
 }
 
-data.raw["gui-style"].default["als_button_size"] =
+style.als_button_position =
 {
     type = "button_style",
     parent = "als_button_total",
     width = 60,
 }
 
-data.raw["gui-style"].default["als_button_size_selected"] =
+style.als_button_position_selected =
 {
     type = "button_style",
     parent = "als_button_total_selected",
     width = 60,
 }
 
-data.raw["gui-style"].default["als_button_items"] =
+style.als_button_size =
 {
     type = "button_style",
     parent = "als_button_total",
     width = 60,
 }
 
-data.raw["gui-style"].default["als_button_items_selected"] =
+style.als_button_size_selected =
 {
     type = "button_style",
     parent = "als_button_total_selected",
     width = 60,
 }
 
-data.raw["gui-style"].default["als_button_log"] =
+style.als_button_items =
 {
     type = "button_style",
     parent = "als_button_total",
     width = 60,
 }
 
-data.raw["gui-style"].default["als_button_log_selected"] =
+style.als_button_items_selected =
 {
     type = "button_style",
     parent = "als_button_total_selected",
     width = 60,
 }
 
-data.raw["gui-style"].default["als_button_con"] =
+style.als_button_log =
 {
     type = "button_style",
     parent = "als_button_total",
     width = 60,
 }
 
-data.raw["gui-style"].default["als_button_con_selected"] =
+style.als_button_log_selected =
 {
     type = "button_style",
     parent = "als_button_total_selected",
     width = 60,
 }
 
-data.raw["gui-style"].default["als_button_charging"] =
+style.als_button_con =
 {
     type = "button_style",
     parent = "als_button_total",
     width = 60,
 }
 
-data.raw["gui-style"].default["als_button_charging_selected"] =
+style.als_button_con_selected =
 {
     type = "button_style",
     parent = "als_button_total_selected",
     width = 60,
 }
 
-data.raw["gui-style"].default["als_button_waiting"] =
+style.als_button_charging =
 {
     type = "button_style",
     parent = "als_button_total",
     width = 60,
 }
 
-data.raw["gui-style"].default["als_button_waiting_selected"] =
+style.als_button_charging_selected =
 {
     type = "button_style",
     parent = "als_button_total_selected",
     width = 60,
 }
 
-data.raw["gui-style"].default["als_button_all"] =
+style.als_button_waiting =
+{
+    type = "button_style",
+    parent = "als_button_total",
+    width = 60,
+}
+
+style.als_button_waiting_selected =
+{
+    type = "button_style",
+    parent = "als_button_total_selected",
+    width = 60,
+}
+
+style.als_button_all =
 {
     type = "button_style",
     parent = "als_button",
@@ -1581,7 +1584,7 @@ data.raw["gui-style"].default["als_button_all"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_all_selected"] =
+style.als_button_all_selected =
 {
     type = "button_style",
     parent = "als_button_selected",
@@ -1631,7 +1634,7 @@ data.raw["gui-style"].default["als_button_all_selected"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_apc"] =
+style.als_button_apc =
 {
     type = "button_style",
     parent = "button_style",
@@ -1680,7 +1683,7 @@ data.raw["gui-style"].default["als_button_apc"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_apc_selected"] =
+style.als_button_apc_selected =
 {
     type = "button_style",
     parent = "als_button_apc",
@@ -1721,7 +1724,7 @@ data.raw["gui-style"].default["als_button_apc_selected"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_ppc"] =
+style.als_button_ppc =
 {
     type = "button_style",
     parent = "button_style",
@@ -1770,7 +1773,7 @@ data.raw["gui-style"].default["als_button_ppc"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_ppc_selected"] =
+style.als_button_ppc_selected =
 {
     type = "button_style",
     parent = "als_button_ppc",
@@ -1811,7 +1814,7 @@ data.raw["gui-style"].default["als_button_ppc_selected"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_sc"] =
+style.als_button_sc =
 {
     type = "button_style",
     parent = "button_style",
@@ -1860,7 +1863,7 @@ data.raw["gui-style"].default["als_button_sc"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_sc_selected"] =
+style.als_button_sc_selected =
 {
     type = "button_style",
     parent = "als_button_sc",
@@ -1901,7 +1904,7 @@ data.raw["gui-style"].default["als_button_sc_selected"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_rc"] =
+style.als_button_rc =
 {
     type = "button_style",
     parent = "button_style",
@@ -1950,7 +1953,7 @@ data.raw["gui-style"].default["als_button_rc"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_rc_selected"] =
+style.als_button_rc_selected =
 {
     type = "button_style",
     parent = "als_button_rc",
@@ -1991,7 +1994,7 @@ data.raw["gui-style"].default["als_button_rc_selected"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_woc"] =
+style.als_button_woc =
 {
     type = "button_style",
     parent = "button_style",
@@ -2043,7 +2046,7 @@ data.raw["gui-style"].default["als_button_woc"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_woc_selected"] =
+style.als_button_woc_selected =
 {
     type = "button_style",
     parent = "als_button_woc",
@@ -2087,7 +2090,7 @@ data.raw["gui-style"].default["als_button_woc_selected"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_irc"] =
+style.als_button_irc =
 {
     type = "button_style",
     parent = "button_style",
@@ -2139,7 +2142,7 @@ data.raw["gui-style"].default["als_button_irc"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_irc_selected"] =
+style.als_button_irc_selected =
 {
     type = "button_style",
     parent = "als_button_irc",
@@ -2183,7 +2186,7 @@ data.raw["gui-style"].default["als_button_irc_selected"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_stc"] =
+style.als_button_stc =
 {
     type = "button_style",
     parent = "button_style",
@@ -2235,7 +2238,7 @@ data.raw["gui-style"].default["als_button_stc"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_stc_selected"] =
+style.als_button_stc_selected =
 {
     type = "button_style",
     parent = "als_button_stc",
@@ -2279,7 +2282,7 @@ data.raw["gui-style"].default["als_button_stc_selected"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_log"] =
+style.als_button_log =
 {
     type = "button_style",
     parent = "button_style",
@@ -2331,7 +2334,7 @@ data.raw["gui-style"].default["als_button_log"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_log_selected"] =
+style.als_button_log_selected =
 {
     type = "button_style",
     parent = "als_button_log",
@@ -2375,7 +2378,7 @@ data.raw["gui-style"].default["als_button_log_selected"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_con"] =
+style.als_button_con =
 {
     type = "button_style",
     parent = "button_style",
@@ -2427,7 +2430,7 @@ data.raw["gui-style"].default["als_button_con"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_con_selected"] =
+style.als_button_con_selected =
 {
     type = "button_style",
     parent = "als_button_con",
@@ -2471,7 +2474,7 @@ data.raw["gui-style"].default["als_button_con_selected"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_port"] =
+style.als_button_port =
 {
     type = "button_style",
     parent = "button_style",
@@ -2523,7 +2526,7 @@ data.raw["gui-style"].default["als_button_port"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_port_selected"] =
+style.als_button_port_selected =
 {
     type = "button_style",
     parent = "als_button_port",
@@ -2567,7 +2570,7 @@ data.raw["gui-style"].default["als_button_port_selected"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_edit"] =
+style.als_button_edit =
 {
     type = "button_style",
     parent = "button_style",
@@ -2620,7 +2623,7 @@ data.raw["gui-style"].default["als_button_edit"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_confirm"] =
+style.als_button_confirm =
 {
     type = "button_style",
     parent = "button_style",
@@ -2673,7 +2676,7 @@ data.raw["gui-style"].default["als_button_confirm"] =
     }
 }
 
-data.raw["gui-style"].default["als_button_hidden"] =
+style.als_button_hidden =
 {
     type = "button_style",
     parent = "button_style",
@@ -2682,7 +2685,7 @@ data.raw["gui-style"].default["als_button_hidden"] =
 
 
 -- sort controls
-data.raw["gui-style"].default["als_sort_desc"] =
+style.als_sort_desc =
 {
     type = "frame_style",
     parent = "frame_style",
@@ -2708,7 +2711,7 @@ data.raw["gui-style"].default["als_sort_desc"] =
     }
 }
 
-data.raw["gui-style"].default["als_sort_asc"] =
+style.als_sort_asc =
 {
     type = "frame_style",
     parent = "frame_style",
@@ -2734,7 +2737,7 @@ data.raw["gui-style"].default["als_sort_asc"] =
     }
 }
 
-data.raw["gui-style"].default["als_sort"] =
+style.als_sort =
 {
     type = "frame_style",
     parent = "frame_style",
@@ -2760,7 +2763,7 @@ data.raw["gui-style"].default["als_sort"] =
     }
 }
 
-data.raw["gui-style"].default["als_sort_holder"] =
+style.als_sort_holder =
 {
     type = "frame_style",
     parent = "frame_style",
@@ -2788,7 +2791,7 @@ data.raw["gui-style"].default["als_sort_holder"] =
 
 -- item icons styles
 
-data.raw["gui-style"].default["als_item_icon"] =
+style.als_item_icon =
 {
     type = "button_style",
     parent = "button_style",
@@ -2832,7 +2835,7 @@ data.raw["gui-style"].default["als_item_icon"] =
     },
 }
 
-data.raw["gui-style"].default["als_item_icon_selected"] =
+style.als_item_icon_selected =
 {
     type = "button_style",
     parent = "button_style",
@@ -2877,7 +2880,7 @@ data.raw["gui-style"].default["als_item_icon_selected"] =
 }
 
 
-data.raw["gui-style"].default["als_item_icon_small"] =
+style.als_item_icon_small =
 {
     type = "button_style",
     parent = "button_style",
@@ -2921,7 +2924,7 @@ data.raw["gui-style"].default["als_item_icon_small"] =
     },
 }
 
-data.raw["gui-style"].default["als_item_icon_small_selected"] =
+style.als_item_icon_small_selected =
 {
     type = "button_style",
     parent = "button_style",

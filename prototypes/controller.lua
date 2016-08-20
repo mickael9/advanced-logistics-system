@@ -1,4 +1,4 @@
-emptyAnimations =       {
+emptyAnimations = {
     filename = "__advanced-logistics-system__/graphics/trans.png",
     priority = "medium",
     width = 0,
@@ -60,7 +60,7 @@ data:extend({
         item_pickup_distance = 0,
 
         subgroup = "creatures",
-        order="z",
+        order = "z",
         eat =
         {
             {
@@ -80,5 +80,4 @@ data:extend({
         mining_with_tool_particles_animation_positions = {0},
         running_sound_animation_positions = {0, 0}
     }
-
 })
