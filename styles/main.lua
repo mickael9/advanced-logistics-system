@@ -132,7 +132,7 @@ data.raw["gui-style"].default["als_frame"] =
     right_padding = 4,
     bottom_padding = 10,
     left_padding = 4,
-    scalable = is_scalable, 
+    scalable = is_scalable,
 }
 
 data.raw["gui-style"].default["als_frame_hidden"] =
@@ -277,7 +277,7 @@ data.raw["gui-style"].default["als_flow_style"] =
 {
     type = "flow_style",
     horizontal_spacing = 0,
-    vertical_spacing = 0,    
+    vertical_spacing = 0,
     top_padding = 0,
     right_padding = 0,
     bottom_padding = 0,
@@ -386,7 +386,7 @@ data.raw["gui-style"].default["als_tools_flow"] =
     scalable = is_scalable,
 }
 
--- Networks 
+-- Networks
 data.raw["gui-style"].default["als_network_value_flow"] =
 {
     type = "flow_style",
@@ -606,7 +606,7 @@ data.raw["gui-style"].default["als_button_small"] =
             height = 28,
             x = 0
         }
-    }    
+    }
 }
 
 data.raw["gui-style"].default["als_button_small_selected"] =
@@ -2803,7 +2803,7 @@ data.raw["gui-style"].default["als_item_icon"] =
             filename = "__advanced-logistics-system__/graphics/gui.png",
             priority = "extra-high-no-scale",
             width = 32,
-            height = 32,            
+            height = 32,
             x = 0
         }
     },
@@ -2847,7 +2847,7 @@ data.raw["gui-style"].default["als_item_icon_selected"] =
             filename = "__advanced-logistics-system__/graphics/gui.png",
             priority = "extra-high-no-scale",
             width = 32,
-            height = 32,            
+            height = 32,
             x = 32
         }
     },
@@ -2892,7 +2892,7 @@ data.raw["gui-style"].default["als_item_icon_small"] =
             filename = "__advanced-logistics-system__/graphics/gui.png",
             priority = "extra-high-no-scale",
             width = 32,
-            height = 32,            
+            height = 32,
             x = 0
         }
     },
@@ -2936,7 +2936,7 @@ data.raw["gui-style"].default["als_item_icon_small_selected"] =
             filename = "__advanced-logistics-system__/graphics/gui.png",
             priority = "extra-high-no-scale",
             width = 32,
-            height = 32,            
+            height = 32,
             x = 32
         }
     },

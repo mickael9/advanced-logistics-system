@@ -4,9 +4,9 @@ function addSearchWidget(player, index)
     local contentFrame = player.gui[guiPos].logisticsFrame.contentFrame
     local searchFlow = contentFrame["searchFlow"]
     local currentTab = global.currentTab[index]
-    local searchText = global.searchText[index][currentTab]    
+    local searchText = global.searchText[index][currentTab]
     searchText = searchText and searchText or ""
-    
+
     if searchFlow == nil then
         searchFlow = contentFrame.add({type = "flow", name = "searchFlow", style = "als_info_flow", direction = "horizontal"})
         -- remove old search frame
@@ -15,16 +15,16 @@ function addSearchWidget(player, index)
             oldSearchFrame.destroy()
         end
     end
-    
-    for _,tab in pairs(global.guiTabs) do    
+
+    for _,tab in pairs(global.guiTabs) do
         if tab ~= currentTab and searchFlow[tab .. "SearchFrame"] ~= nil then
             searchFlow[tab .. "SearchFrame"].style = "als_search_frame_hidden"
-                
+
             -- remove old search frame
             local oldSearchFrame = contentFrame[tab .. "SearchFrame"]
             if oldSearchFrame ~= nil then
                 oldSearchFrame.destroy()
-            end           
+            end
         end
     end
 
@@ -48,9 +48,9 @@ function addNetworkSearchWidget(player, index)
     local guiPos = global.settings[index].guiPos
     local contentFrame = player.gui[guiPos].logisticsFrame.contentFrame
     local searchFlow = contentFrame["searchFlow"]
-    local searchText = global.searchText[index]["networks"]    
+    local searchText = global.searchText[index]["networks"]
     searchText = searchText and searchText or ""
-    
+
     if searchFlow == nil then
         searchFlow = contentFrame.add({type = "flow", name = "searchFlow", style = "als_info_flow", direction = "horizontal"})
     end
@@ -261,7 +261,7 @@ function addItemTotalsInfoWidget(info, player, index)
     if infoFlow == nil then
         infoFlow = contentFrame.add({type = "flow", name = "infoFlow", style = "als_info_flow", direction = "horizontal"})
     end
-    
+
     --add item name info frame
     local infoFrameName = infoFlow[currentTab .. "infoFrameName"]
     if infoFrameName ~= nil then
@@ -292,7 +292,7 @@ function addItemTotalsInfoWidget(info, player, index)
             if infoFrame ~= nil then
                 infoFrame.destroy()
             end
-            
+
             if v > 0 then
                 infoFrame = infoFlow.add({type = "frame", name = currentTab .. "InfoFrame" .. key, style = "als_info_frame", direction = "horizontal"})
                 infoFrame.add({type = "label", name = currentTab .. "InfoFrameTotalLabel" .. key, style = "als_info_label", caption = {"info-" .. k}})
@@ -335,14 +335,14 @@ function addItemFiltersWidget(player, index)
     local buttonStyle = filters["chests"]["all"] ~= nil and "_selected" or ""
     chestsFilterFrame = filtersFlow.add({type = "frame", name = "chestsFilterFrame", style = "als_filters_frame", direction = "horizontal"})
     chestsFilterFrame.add({type = "button", name = "itemInfoFilter_all", caption = {"all"}, style = "als_button_all" .. buttonStyle})
-    
+
     for type,codes in pairs(global.codeToName) do
         for code,name in pairs(codes) do
             if code ~= "name" and code ~= "total" then
                 local spritePath = getItemSprite(player, name)
                 if spritePath then
                     local buttonStyle = filters["chests"][code] ~= nil and "_selected" or ""
-                    chestsFilterFrame.add({type = "sprite-button", name = "itemInfoFilter_" .. code, style = "als_item_icon_small" .. buttonStyle, sprite = spritePath, tooltip = {"tooltips.filter-by", getLocalisedName(name)}})                
+                    chestsFilterFrame.add({type = "sprite-button", name = "itemInfoFilter_" .. code, style = "als_item_icon_small" .. buttonStyle, sprite = spritePath, tooltip = {"tooltips.filter-by", getLocalisedName(name)}})
                 end
             end
         end
@@ -359,15 +359,15 @@ function addDisconnectedFiltersWidget(player, index)
 
     if filtersFlow == nil then
         filtersFlow = contentFrame.add({type = "flow", name = "filtersFlow", style = "als_info_flow", direction = "horizontal"})
-    end    
-    
+    end
+
     local chestsFilterFrame = filtersFlow["chestsFilterFrame"]
     if chestsFilterFrame ~= nil then
         chestsFilterFrame.destroy()
     end
 
     local buttonStyle = filters["chests"]["all"] ~= nil and "_selected" or ""
-    chestsFilterFrame = filtersFlow.add({type = "frame", name = "chestsFilterFrame", style = "als_filters_frame", direction = "horizontal"})    
+    chestsFilterFrame = filtersFlow.add({type = "frame", name = "chestsFilterFrame", style = "als_filters_frame", direction = "horizontal"})
     chestsFilterFrame.add({type = "label", name = "chestsFilterFrameLabel", style = "als_info_label", caption = {"filters"}})
     chestsFilterFrame.add({type = "button", name = "disconnectedFilter_all", caption = {"all"}, style = "als_button_all" .. buttonStyle})
     for code,name in pairs(global.codeToName.logistics) do
@@ -375,7 +375,7 @@ function addDisconnectedFiltersWidget(player, index)
             local spritePath = getItemSprite(player, name)
             if spritePath then
                 local buttonStyle = filters["chests"][code] ~= nil and "_selected" or ""
-                chestsFilterFrame.add({type = "sprite-button", name = "disconnectedFilter_" .. code, style = "als_item_icon_small" .. buttonStyle, sprite = spritePath, tooltip = {"tooltips.filter-by", getLocalisedName(name)}})                
+                chestsFilterFrame.add({type = "sprite-button", name = "disconnectedFilter_" .. code, style = "als_item_icon_small" .. buttonStyle, sprite = spritePath, tooltip = {"tooltips.filter-by", getLocalisedName(name)}})
             end
         end
     end
@@ -390,14 +390,14 @@ function addNetworkFiltersWidget(player, index)
     local searchFlow = contentFrame["searchFlow"]
     local currentTab = global.currentTab[index]
     local filters = global.networksFilter[index]
-    local filtersCount = count(filters)    
+    local filtersCount = count(filters)
     local names =  global.networksNames[force]
     local maxFiltersList = math.min(filtersCount, 2)
 
     if searchFlow == nil then
         searchFlow = contentFrame.add({type = "flow", name = "searchFlow", style = "als_info_flow", direction = "horizontal"})
-    end    
-    
+    end
+
     -- remove network filters info frame
     local networkFiltersFrame = searchFlow["networkFiltersFrame"]
     if currentTab == "itemInfo" then
@@ -410,13 +410,13 @@ function addNetworkFiltersWidget(player, index)
 
     -- add network filters info frame
     if currentTab == "logistics" then
-        
+
         -- remove old search frame
         local oldnetworkFiltersFrame = contentFrame["networkFiltersFrame"]
         if oldnetworkFiltersFrame ~= nil then
             oldnetworkFiltersFrame.destroy()
         end
-        
+
         networkFiltersFrame = searchFlow.add({type = "frame", name = "networkFiltersFrame", style = "als_info_frame", direction = "horizontal"})
         networkFiltersFrame.add({type = "label", name = "networkFiltersFrameLabel", style = "als_info_label", caption = {"network-filters"}})
 
@@ -435,9 +435,9 @@ function addNetworkFiltersWidget(player, index)
             networkFiltersFrame = filtersFlow.add({type = "frame", name = "networkFiltersFrame", style = "als_info_frame", direction = "horizontal"})
 
             networkFiltersFrame.add({type = "label", name = "networkFiltersFrameLabel", style = "als_info_label", caption = {"networks"}})
-            if filtersCount > 0 then           
-                networkFiltersFrame.add({type = "label", name = "networkFiltersFrameCount", style = "als_info_label", caption = "(" .. filtersCount .. ")"})            
-            end                
+            if filtersCount > 0 then
+                networkFiltersFrame.add({type = "label", name = "networkFiltersFrameCount", style = "als_info_label", caption = "(" .. filtersCount .. ")"})
+            end
             networkFiltersFrame.add({type = "button", name = "networkFiltersFrameView", caption = {"filter"}, style = "als_button_small"})
         end
     end

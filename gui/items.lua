@@ -2,10 +2,10 @@
 function updateItemsTable(items, player, index, page, search, sort_by, sort_dir)
     if items then
         local guiPos = global.settings[index].guiPos
-        local currentTab = global.currentTab[index]    
+        local currentTab = global.currentTab[index]
         local iconsCount = count(global.codeToName[currentTab])
         local colspan =  iconsCount + 2
-        
+
         if player.gui[guiPos].logisticsFrame ~= nil and player.gui[guiPos].logisticsFrame.contentFrame ~= nil then
 
             local contentFrame = player.gui[guiPos].logisticsFrame.contentFrame
@@ -17,8 +17,8 @@ function updateItemsTable(items, player, index, page, search, sort_by, sort_dir)
 
             -- add search widget
                 addSearchWidget(player, index)
-                
-            -- add network filters widget    
+
+            -- add network filters widget
                 addNetworkFiltersWidget(player, index)
 
             -- create items frame
@@ -70,7 +70,7 @@ function updateItemsTable(items, player, index, page, search, sort_by, sort_dir)
                 player.gui[guiPos].logisticsFrame.contentFrame.itemsFrame.itemsTable.destroy()
             end
             itemsTable = itemsFrame.add({type = "table", name = "itemsTable", colspan = colspan, style = "als_items_table"})
-            
+
             -- set items table dynamic height
             --itemsTable.style.minimal_height = itemsPerPage * 49
 
@@ -97,7 +97,7 @@ function updateItemsTable(items, player, index, page, search, sort_by, sort_dir)
                         local buttonStyle = isSelected and "_selected" or ""
                         local sortDirStyle = (isSelected and sort_dir) and "_" .. sort_dir or ""
 
-                        local codeFlow = itemsTable.add({type = "flow", name = code .. "Flow", direction = "horizontal", style = "als_table_flow"})                    
+                        local codeFlow = itemsTable.add({type = "flow", name = code .. "Flow", direction = "horizontal", style = "als_table_flow"})
                         codeFlow.add({type = "sprite-button", name = "itemSort_" .. code, style = "als_item_icon_small" .. buttonStyle, sprite = spritePath, tooltip = getLocalisedName(name)})
                         local codeSortFlow = codeFlow.add({type = "flow", name = code .. "SortFlow", direction = "vertical", style = "als_sort_flow"})
                         codeSortFlow.add({type = "frame", name = code .. "SortHolder", style = "als_sort_holder"})
@@ -118,7 +118,7 @@ function updateItemsTable(items, player, index, page, search, sort_by, sort_dir)
             totalSortFlow.add({type = "frame", name = "total_sort", style = "als_sort" .. sortDirStyle})
 
             -- info column
-            local itemsInfoWrapper = itemsTable.add({type = "flow", name = "itemsInfoWrapper", direction = "horizontal", style = "als_items_info_flow"})    
+            local itemsInfoWrapper = itemsTable.add({type = "flow", name = "itemsInfoWrapper", direction = "horizontal", style = "als_items_info_flow"})
             itemsInfoWrapper.add({type = "label", name = "itemInfo", caption = {"item-info"}})
 
             -- get filtered/sorted items
@@ -168,7 +168,7 @@ function showItemInfo(item, player, index, page, sort_by, sort_dir)
         local prevTab = global.currentTab[index]
         global.currentTab[index] = currentTab
         local filters = global.itemInfoFilters[index]
-        
+
         -- check for default filters based on previous table
         if autoFilter and prevTab ~= currentTab then
             if prevTab == "logistics" then
@@ -177,26 +177,26 @@ function showItemInfo(item, player, index, page, sort_by, sort_dir)
             elseif prevTab == "normal" then
                 filters["group"]["logistics"] = nil
                 filters["group"]["normal"] = true
-            end   
+            end
             global.itemInfoFilters[index] = filters
         end
-        
+
         local info = getItemInfo(item, player, index, filters)
         local chests = info["chests"]
         local total = info["total"]
-        
+
 
 
         if player.gui[guiPos].logisticsFrame ~= nil and player.gui[guiPos].logisticsFrame.contentFrame ~= nil then
 
             local contentFrame = player.gui[guiPos].logisticsFrame.contentFrame
-           
+
             -- show item totals info
-                addItemTotalsInfoWidget(info, player, index)                            
+                addItemTotalsInfoWidget(info, player, index)
                 addItemFiltersWidget(player, index)
-                
-            -- add network filters widget    
-                addNetworkFiltersWidget(player, index)                    
+
+            -- add network filters widget
+                addNetworkFiltersWidget(player, index)
 
             -- create chests frame
             if player.gui[guiPos].logisticsFrame.contentFrame.itemInfoFrame ~= nil then
@@ -239,7 +239,7 @@ function showItemInfo(item, player, index, page, sort_by, sort_dir)
 
             if chestsCount > 0 then
                 itemInfoTable = itemInfoFrame.add({type ="table", name = "itemInfoTable", colspan = 5, style = "als_items_table"})
-                
+
                 -- chest image column
                 itemInfoTable.add({type = "flow", name = "itemInfo_icon", caption = " ", style = "als_icon_flow"})
 
@@ -276,10 +276,10 @@ function showItemInfo(item, player, index, page, sort_by, sort_dir)
                 countSortFlow.add({type = "frame", name = "countSortHolder", style = "als_sort_holder"})
                 countSortFlow.add({type = "frame", name = "count_sort", style = "als_sort" .. sortDirStyle})
 
-                -- tools column                
-                local itemInfoToolsWrapper = itemInfoTable.add({type = "flow", name = "itemInfoToolsWrapper", direction = "horizontal", style = "als_tools_flow"})    
-                itemInfoToolsWrapper.add({type = "label", name = "itemInfo_tools", caption = {"chest-tools"}})                
-                
+                -- tools column
+                local itemInfoToolsWrapper = itemInfoTable.add({type = "flow", name = "itemInfoToolsWrapper", direction = "horizontal", style = "als_tools_flow"})
+                itemInfoToolsWrapper.add({type = "label", name = "itemInfo_tools", caption = {"chest-tools"}})
+
                 -- get filtered/sorted items
                 if exTools then
                     tooltip_upgrade_apc = {"tooltips.tools-upgrade", getLocalisedName(codeToName("apc"))}
@@ -301,7 +301,7 @@ function showItemInfo(item, player, index, page, sort_by, sort_dir)
                     if current >= start and current <= max then
                         local spritePath = getItemSprite(player, name)
                         if spritePath then
-                            itemInfoTable.add({type = "sprite-button", name = "itemInfoIcon_" .. key, style = "als_item_icon", sprite = spritePath})        
+                            itemInfoTable.add({type = "sprite-button", name = "itemInfoIcon_" .. key, style = "als_item_icon", sprite = spritePath})
                         else
                             itemInfoTable.add({type = "sprite-button", name = "itemInfoIcon_" .. key, style = "als_item_icon"})
                         end
@@ -312,7 +312,7 @@ function showItemInfo(item, player, index, page, sort_by, sort_dir)
                         if toolsFlow == nil then
                             toolsFlow = itemInfoTable.add({type = "flow", name = "itemInfoTools_" .. key, direction = "horizontal", style = "als_tools_flow"})
                         end
-                        
+
                         toolsFlow.add({type = "button", name = "itemAction_location_" .. key, style = "als_button_location", tooltip = {"tooltips.tools-location"}})
                         if exTools then toolsFlow.add({type = "button", name = "itemAction_teleport_" .. key, style = "als_button_teleport", tooltip = {"tooltips.tools-teleport"}}) end
                         toolsFlow.add({type = "button", name = "itemAction_delete_" .. key, style = "als_button_delete" .. deleteBtnStyle, tooltip={"tooltips.tools-delete"}})
@@ -355,17 +355,17 @@ function showDisconnectedInfo(player, index, page, sort_by, sort_dir)
         global.currentTab[index] = currentTab
         local chests = disconnected
         local filters = global.disconnectedFilters[index]
-        
+
         if player.gui[guiPos].logisticsFrame ~= nil and player.gui[guiPos].logisticsFrame.contentFrame ~= nil then
 
             local contentFrame = player.gui[guiPos].logisticsFrame.contentFrame
 
             -- add info widgets
             addDisconnectedInfoWidget(player, index)
-            
+
             -- add filters widget
-            addDisconnectedFiltersWidget(player, index)        
-            
+            addDisconnectedFiltersWidget(player, index)
+
             -- create chests frame
             if player.gui[guiPos].logisticsFrame.contentFrame.disconnectedFrame ~= nil then
                 player.gui[guiPos].logisticsFrame.contentFrame.disconnectedFrame.destroy()
@@ -450,29 +450,29 @@ function showDisconnectedInfo(player, index, page, sort_by, sort_dir)
             countSortFlow.add({type = "frame", name = "count_sort", style = "als_sort" .. sortDirStyle})
 
             -- tools column
-            local disconnectedInfoToolsWrapper = disconnectedTable.add({type = "flow", name = "disconnectedInfoToolsWrapper", direction = "horizontal", style = "als_tools_flow"})                
+            local disconnectedInfoToolsWrapper = disconnectedTable.add({type = "flow", name = "disconnectedInfoToolsWrapper", direction = "horizontal", style = "als_tools_flow"})
             disconnectedInfoToolsWrapper.add({type = "label", name = "disconnectedInfo_tools", caption = {"chest-tools"}})
-            
+
             -- get filtered/sorted items
             if exTools then
                 tooltip_upgrade_apc = {"tooltips.tools-upgrade", getLocalisedName(codeToName("apc"))}
                 tooltip_upgrade_ppc = {"tooltips.tools-upgrade", getLocalisedName(codeToName("ppc"))}
                 tooltip_upgrade_sc = {"tooltips.tools-upgrade", getLocalisedName(codeToName("sc"))}
                 tooltip_upgrade_rc = {"tooltips.tools-upgrade", getLocalisedName(codeToName("rc"))}
-            end            
-            for key,chest in spairs(chests, orderfunc) do                                
+            end
+            for key,chest in spairs(chests, orderfunc) do
                 local name = getCompName(chest.name)
                 name = name and name or chest.name
-                
+
                 if (filters and (filters["chests"][name] or filters["chests"]["all"])) or filters == nil then
-                    local itemsCount = chest.get_item_count()                        
+                    local itemsCount = chest.get_item_count()
                     local pos = chest.position
                     local code = nameToCode(name)
                     local deconstructed = chest.to_be_deconstructed(player.force)
                     local deleteBtnStyle = deconstructed and "_selected" or ""
 
                     current= current + 1
-                    if current >= start and current <= max then     
+                    if current >= start and current <= max then
                         local spritePath = getItemSprite(player, name)
                         if spritePath then
                             disconnectedTable.add({type = "sprite-button", name = "disconnectedInfoIcon_" .. key, style = "als_item_icon", sprite = spritePath})

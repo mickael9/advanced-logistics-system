@@ -1,4 +1,4 @@
-emptyAnimations =       { 
+emptyAnimations =       {
     filename = "__advanced-logistics-system__/graphics/trans.png",
     priority = "medium",
     width = 0,
@@ -26,8 +26,8 @@ emptyLevel = {
 }
 
 lsanimations = {
-    level1 = emptyLevel, 
-    level2addon = emptyLevel, 
+    level1 = emptyLevel,
+    level2addon = emptyLevel,
     level3addon = emptyLevel
 }
 
@@ -57,7 +57,7 @@ data:extend({
         distance_per_frame = 0,
         maximum_corner_sliding_distance = 0,
         loot_pickup_distance = 0,
-        item_pickup_distance = 0,        
+        item_pickup_distance = 0,
 
         subgroup = "creatures",
         order="z",
